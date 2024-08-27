@@ -37,7 +37,7 @@ public class SecurityConfig{
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(
                         authorize -> authorize
-                                // "/user/*" 경로에 대한 요청은 인증된 사용자만 접근할 수 있습니다.
+                                // "/user/*" 경로에 대한 요청은 인증된 사용자만 접근할 수 있습니다. //로그인만되면됨
                                 .requestMatchers("/user/**").authenticated()
                                 // "/manager/**" 경로에 대한 요청은 "ROLE_ADMIN" 또는 "ROLE_MANAGER" 역할을 가진 사용자만 접근할 수 있습니다.
                                 .requestMatchers("/manager/**").hasAnyRole("ADMIN", "MANAGER")
@@ -49,12 +49,9 @@ public class SecurityConfig{
                 .formLogin(form -> form
                         // 사용자 정의 로그인 페이지를 설정합니다.
                         .loginPage("/loginForm")
+                        .loginProcessingUrl("/login")
                         // 로그인 성공 후 리디렉션할 경로를 설정합니다.
-                        .defaultSuccessUrl("/home", true)
-                        // 로그인 실패 시 리디렉션할 경로를 설정합니다.
-                        .failureUrl("/login?error")
-                        // 로그인 페이지와 로그인 요청 URL에 대한 접근을 허용합니다.
-                        .permitAll()
+                        .defaultSuccessUrl("/") //.defaultSuccessUrl("/", true) 이렇게 무조건 가게할지 아니면 이전에 검색했던 url로 가게 할지 정하는게 가능
                 );
 
         //이 메서드는 현재까지 구성된 HttpSecurity 객체를 빌드하여 최종적인 SecurityFilterChain을 생성합니다. 이 필터 체인은 Spring Security가 HTTP 요청을 처리할 때 적용됩니다.

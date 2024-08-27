@@ -62,7 +62,7 @@ public class IndexController {
     //회원가입
     @PostMapping("/join")
     public String join(User user) {
-        log.info(String.valueOf(user.getId()));
+        log.info(String.valueOf(user));
         user.setRole("ROLE_USER");
         String rawPassword = user.getPassword();
         String encPassword = bCryptPasswordEncoder.encode(rawPassword);
