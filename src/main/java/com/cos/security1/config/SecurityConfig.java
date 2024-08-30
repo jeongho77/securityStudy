@@ -32,10 +32,10 @@ public class SecurityConfig{
 //    }
 
     //해당 메서드의 리턴되는 오브젝트를 IoC로 등록해준다.
-    @Bean
-    public BCryptPasswordEncoder bCryptPasswordEncoder() {
-        return new BCryptPasswordEncoder();
-    }
+//    @Bean
+//    public BCryptPasswordEncoder bCryptPasswordEncoder() {
+//        return new BCryptPasswordEncoder();
+//    }
 
     //SecurityFilterChain은 보안 필터의 체인을 나타내며, Spring Security가 모든 HTTP 요청을 처리할 때 사용하는 필터 체인을 구성합니다. http.build()를 호출하면 이 체인이 완성되고 반환됩니다.
     @Bean

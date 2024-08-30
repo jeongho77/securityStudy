@@ -18,7 +18,6 @@ import org.springframework.stereotype.Service;
 public class PrincipalOauth2UserService extends DefaultOAuth2UserService {
     private static final Logger log = LoggerFactory.getLogger(PrincipalOauth2UserService.class);
 
-    @Lazy
     @Autowired
     private BCryptPasswordEncoder bCryptPasswordEncoder;
     @Autowired
