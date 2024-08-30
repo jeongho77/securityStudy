@@ -66,8 +66,10 @@ public class IndexController {
         return "index"; // src/main/resources/templates/index.mustache경로로 찾는다.
     }
 
+    //Oauth와 일반 로그인을 해도 PrincipalDetails
     @GetMapping("/user")
-    public @ResponseBody String user(){
+    public @ResponseBody String user(@AuthenticationPrincipal PrincipalDetails principalDetails) {
+        log.info("principal : " + principalDetails.getUser());
         return "user";
     }
 

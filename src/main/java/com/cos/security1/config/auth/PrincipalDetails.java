@@ -24,8 +24,16 @@ import java.util.Map;
 public class PrincipalDetails implements UserDetails, OAuth2User {
 
     private User user; //콤포지션
+    private Map<String, Object> attributes;
 
+    //일바 ㄴ로그인
     public PrincipalDetails(User user) {
+        this.user = user;
+    }
+
+    //OAuth 로그인
+    public PrincipalDetails(User user, Map<String, Object> attributes) {
+        this.attributes = attributes;
         this.user = user;
     }
 
@@ -78,11 +86,12 @@ public class PrincipalDetails implements UserDetails, OAuth2User {
 
     @Override
     public String getName() {
-        return "";
+//        return attributes.get("sub");
+        return null;
     }
 
     @Override
     public Map<String, Object> getAttributes() {
-        return Map.of();
+        return attributes;
     }
 }
