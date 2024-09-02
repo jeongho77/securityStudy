@@ -27,6 +27,11 @@ public class PrincipalOauth2UserService extends DefaultOAuth2UserService {
     //userRequest: org.springframework.security.oauth2.client.userinfo.OAuth2UserRequest@5acdf0c6
     @Override
     public OAuth2User loadUser(OAuth2UserRequest userRequest) throws OAuth2AuthenticationException {
+
+        if(userRequest.getClientRegistration().getRegistrationId().equals("google")) {
+            log.info("구글 로그인 요청");
+        }
+
         log.info("userClientRegistration: " +userRequest.getClientRegistration()); //registrationId로 어떤 OAuth로 로그인했는지 확인 가능
         log.info("getAccessToken: " +userRequest.getAccessToken().getTokenValue());
 
