@@ -98,6 +98,10 @@ public class IndexController {
         return "form";
     }
 
+    @GetMapping("/form2")
+    public String form2() {
+        return "form2";
+    }
     //회원가입
     @PostMapping("/join")
     public String join(User user) {
