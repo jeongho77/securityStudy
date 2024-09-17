@@ -19,7 +19,7 @@ import org.springframework.security.web.SecurityFilterChain;
 //내가 이제부터 등록할 필터가 기본 필터체인에 통보가 됨
 public class SecurityConfig{
     @Autowired
-    private PrincipalOauth2UserService principalOauth2UserService;
+    private PrincipalOauth2UserService principalOauth2UserService; //구글 로그인이 완료된 뒤의 후처리가 필요함
 
 //    protected void configure(HttpSecurity http) throws Exception {
 //        http.csrf().disable();
