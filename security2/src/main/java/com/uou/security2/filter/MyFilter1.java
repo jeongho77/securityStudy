@@ -17,20 +17,6 @@ public class MyFilter1 implements Filter {
         System.out.println("필터1");
         chain.doFilter(request, response);
 
-        HttpServletRequest req = (HttpServletRequest) request;
-        HttpServletResponse res = (HttpServletResponse) response;
 
-        if(req.getMethod().equals("POST")){
-            System.out.println("POST 요청됨");
-            String headerAuth = req.getHeader("Authorization");
-            System.out.println(headerAuth);
-
-            if(headerAuth.equals("cos")) {
-                chain.doFilter(req, res);
-            }else{
-                PrintWriter out = res.getWriter();
-                out.println("인증안됨");
-            }
-        }
     }
 }
