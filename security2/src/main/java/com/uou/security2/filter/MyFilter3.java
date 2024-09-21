@@ -22,14 +22,16 @@ public class MyFilter3 implements Filter {
         if(req.getMethod().equals("POST")){
             System.out.println("POST 요청됨");
             String headerAuth = req.getHeader("Authorization");
-            System.out.println(headerAuth);
+            System.out.println("headerAuth : " + headerAuth);
             System.out.println("필터3");
 
-            if(headerAuth.equals("cos")) {
-                chain.doFilter(req, res);
+            if(headerAuth != null){
+                System.out.println("필터 3 인증이 되었음");
+                chain.doFilter(req, res); //다음 필터를 타게 해줌
             }else{
                 PrintWriter out = res.getWriter();
                 out.println("인증안됨");
+                System.out.println("필터 3 인증 안됨");
             }
         }
     }

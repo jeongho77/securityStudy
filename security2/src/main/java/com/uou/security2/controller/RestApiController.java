@@ -6,7 +6,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
-@CrossOrigin
+//@CrossOrigin
 @RestController
 @RequiredArgsConstructor
 public class RestApiController {
@@ -30,5 +30,21 @@ public class RestApiController {
         user.setRoles("USER"); // 권한은 기본으로 USER로 설정합니다. ---> security 최신 버전에서는 권한 적용시 ROLE_ 쓰지 않음.
         userRepository.save(user);
         return "회원가입완료";
+    }
+
+    // user, manager, admin 권한이 접근 가능
+    @GetMapping("/api/v1/manager")
+    public String manager(){
+        return "manager";
+    }
+    // manager, admin 권한이 접근 가능
+    @GetMapping("/api/v1/admin")
+    public String admin(){
+        return "hi";
+    }
+    // admin 권한이 접근 가능
+    @GetMapping("/api/v1/user")
+    public String user(){
+        return "user";
     }
 }
