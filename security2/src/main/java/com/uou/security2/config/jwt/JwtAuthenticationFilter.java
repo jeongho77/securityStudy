@@ -57,7 +57,6 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
             UsernamePasswordAuthenticationToken authenticationToken =
                     new UsernamePasswordAuthenticationToken(user.getUsername(), user.getPassword());
 
-            // PrincipalDetailsService의 loadUserByUsername() 함수가 실행된 후 정상이면 authentication이 리턴됨
             // DB에 있는 username과 password가 일치한다.
             // authenticationManager가 로그인을 진행하면 PrincipalDetailsService가 호출이 되고
             // loadUserByUsername() 함수가 실행이 됨.
@@ -100,4 +99,6 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 
         response.addHeader(JwtProperties.HEADER_STRING,JwtProperties.TOKEN_PREFIX+jwtToken);
     }
+
+
 }

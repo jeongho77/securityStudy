@@ -48,7 +48,8 @@ public class SecurityConfig{
                                 .requestMatchers("/user/**").authenticated()
                                 // "/manager/**" 경로에 대한 요청은 "ROLE_ADMIN" 또는 "ROLE_MANAGER" 역할을 가진 사용자만 접근할 수 있습니다.
                                 .requestMatchers("/manager/**").hasAnyRole("ADMIN", "MANAGER")
-                                // "/admin/**" 경로에 대한 요청은 "ROLE_ADMIN" 역할을 가진 사용자만 접근할 수 있습니다.
+                                // "/admin/**" 경로에 대한 요청은 "ROLE_ADMIN" 역할을
+                                // 가진 사용자만 접근할 수 있습니다.
                                 .requestMatchers("/admin/**").hasRole("ADMIN")
                                 //위에서 지정된 경로를 제외한 모든 다른 요청은 인증된 사용자만 접근할 수 있도록 설정합니다. 즉, 로그인된 사용자만 접근할 수 있습니다.
                                 .anyRequest().permitAll()
