@@ -7,7 +7,7 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest # (3).OS환경
+    runs-on: ubuntu-latest # (3).OS환경g
     if: github.event.pull_request.merged == true && github.event.pull_request.base.ref == 'dev'
 
     steps:
@@ -39,7 +39,7 @@ jobs:
         run : echo "CurrentTime=$"
         shell: bash # (9).시간 출력
 
-      - name : Generate deployment package
+      - name : Generate deployment package # (10).배포패키지 생성
         run : |
           mkdir -p delploy 
           cp build/libs/*.jar deploy/application.jar
